@@ -1,0 +1,8 @@
+env
+.vscode
+*.session*
+build
+*.exe
+dist
+__pycache__
+*.spec
