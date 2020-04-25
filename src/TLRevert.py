@@ -5,11 +5,12 @@ from telethon.sync import TelegramClient
 from getpass import getpass
 from telethon.utils import get_peer_id
 
+__version__ = '1.0'
 api_id = YOUR_API_ID_HERE
 api_hash = 'YOUR_API_HASH_HERE'
 TLdevice_model = 'Desktop device'
 TLsystem_version = 'Console'
-TLapp_version = '- TLRevert 1.0'
+TLapp_version = '- TLRevert ' + __version__
 TLlang_code = 'en'
 TLsystem_lang_code = 'en'
 SelfUser1 = None
