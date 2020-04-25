@@ -57,9 +57,9 @@ def extractData(filepath):
                 raise InvalidUser
         cur.execute("SELECT * FROM SentMessagesIDs")
         for row in cur:
-            if user_number1:
+            if user_number1 and row[0] is not None:
                 message_ids.append(row[0])
-            elif not user_number1:
+            elif not user_number1 and row[1] is not None:
                 message_ids.append(row[1])
         cur.execute("SELECT * FROM version LIMIT 1")
         for row in cur:
@@ -87,7 +87,7 @@ def get_target_chat():
     global target_dialog, target_id
     dialogs = client1.get_dialogs(limit=None)
     for dialog in dialogs:
-        if get_peer_id(dialog) == target_id:
+        if get_peer_id(dialog.entity) == target_id:
             target_dialog = dialog.entity
 
 print("WELCOME TO TLREVERT!")
@@ -115,5 +115,5 @@ try:
     client1.delete_messages(target_dialog, message_ids, revoke=True)
 except KeyboardInterrupt:
     exit(0)
-getpass("\nDone! Thank you very much for using TLRevert -ferferga.\n\nPress ENTER to log you out and exit")
+getpass("\nDone! Thank you very much for using TLRevert -ferferga.\n\nPress ENTER to log you out and exit: ")
 client1.log_out()
